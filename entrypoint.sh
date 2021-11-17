@@ -5,7 +5,8 @@ if [ -n "$FLY_PROJECT_PATH" ]; then
   # Allow user to change directories in which to run Fly commands
   cd "$FLY_PROJECT_PATH" || exit
 fi
-sh -c "flyctl $*"
+# dirty hack to allow auto deploy of different appliation name for compatibility with github actions deploy environments
+sh -c "yes | flyctl $*"
 
 ACTUAL_EXIT="$?"
 
